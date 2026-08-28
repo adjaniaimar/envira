@@ -37,13 +37,12 @@ void loop() {
       suhu = t;
       kelembapan = h;
     } else {
-      // DHT11 gagal baca - tetap kirim nilai terakhir yang valid,
-      // supaya dashboard tidak menerima JSON kosong/rusak
+
     }
 
-    nilaiPot = analogRead(POT_PIN); // 0 - 1023
+    nilaiPot = analogRead(POT_PIN);
 
-    // KIRIM DATA SEBAGAI SATU BARIS JSON LEWAT SERIAL (USB)
+    // SEND DATA IN JSON FORMAT
     String json = "{";
     json += "\"suhu\":" + String(suhu, 1) + ",";
     json += "\"kelembapan\":" + String(kelembapan, 1) + ",";
