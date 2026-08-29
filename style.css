@@ -1,19 +1,25 @@
 :root {
-    --sidebar-bg: rgba(59, 36, 21, .045);
-    --card-bg: rgba(59, 36, 21, .05);
-    --card-dark: #3b2415;
-    --text-primary: #1a1410;
-    --text-secondary: #6b5c4d;
-    --text-muted: #a89a89;
-    --accent-light: rgba(59, 36, 21, .07);
-    --border: rgba(59, 36, 21, .16);
-    --green: #6b8a3a;
-    --red: #b5502e;
-    --yellow: #b8791f;
-    --rain: #6b7d82;
-    --green-dark: #45581f;
-    --glass-bg: rgba(59, 36, 21, .05);
-    --glass-border: rgba(59, 36, 21, .16);
+    --sidebar-bg: rgba(1, 47, 19, .045);
+    --card-bg: rgba(1, 47, 19, .05);
+    --card-dark: #012F13;
+    --card-darkest: #011207;
+    --light-tint: #E2F0CC;
+    --text-primary: #011207;
+    --text-secondary: rgba(1, 18, 7, .68);
+    --text-muted: rgba(1, 18, 7, .42);
+    --accent-light: rgba(1, 47, 19, .07);
+    --border: rgba(1, 47, 19, .16);
+    --green: #3B6D11;
+    --red: #993C1D;
+    --yellow: #BA7517;
+    --rain: #185FA5;
+    --green-dark: #27500A;
+    --coral-bg: #FAECE7;
+    --coral-ic: #993C1D;
+    --blue-bg: #E6F1FB;
+    --blue-ic: #185FA5;
+    --glass-bg: rgba(1, 47, 19, .05);
+    --glass-border: rgba(1, 47, 19, .16);
     --glass-blur: blur(20px);
     --radius: 14px;
     --radius-sm: 8px;
@@ -25,11 +31,11 @@
     font-family: 'Montserrat', sans-serif;
     position: relative;
     background:
-      radial-gradient(ellipse 45% 35% at 92% 4%, rgba(232, 217, 189, .35), transparent 60%),
-      radial-gradient(ellipse 42% 34% at 3% 97%, rgba(232, 217, 189, .3), transparent 60%),
+      radial-gradient(ellipse 45% 35% at 92% 4%, rgba(226, 240, 204, .45), transparent 60%),
+      radial-gradient(ellipse 42% 34% at 3% 97%, rgba(226, 240, 204, .4), transparent 60%),
       radial-gradient(ellipse 40% 44% at 33% 32%, rgba(255, 255, 255, .95), transparent 58%),
       radial-gradient(ellipse 58% 48% at 68% 68%, rgba(255, 255, 255, .9), transparent 58%),
-      linear-gradient(135deg, #ffffff 0%, #fdfbf7 35%, #faf6ee 60%, #f6efe1 82%, #fffefb 100%);
+      linear-gradient(135deg, #ffffff 0%, #fbfdf7 35%, #f4f8ec 60%, #eef4e2 82%, #fbfdf7 100%);
     background-attachment: fixed;
     color: var(--text-primary);
     font-size: 14px;
@@ -184,27 +190,32 @@
     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   }
   .db-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.08); border-color: #d8cdbd; }
-  .db-card-hd { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 4px; }
+  .db-card-hd { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
   .db-card-title { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-primary); }
   .db-card-sub { font-size: 10px; color: var(--text-muted); }
 
   /* LAYER 1: WEATHER */
-  .weather-body { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-  .w-icon { width: 56px; height: 56px; flex-shrink: 0; }
-  .w-icon svg { width: 100%; height: 100%; display: block; }
-  .w-temp { font-size: 40px; font-weight: 700; line-height: 1; }
-  .w-temp .unit { font-size: 16px; font-weight: 500; color: var(--text-muted); margin-left: 2px; }
-  .w-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-left: auto; }
-  .w-badge {
-    background: var(--card-dark);
-    color: #f5ede0;
-    border-radius: 10px;
-    padding: 8px 14px;
-    font-size: 10.5px;
-    font-weight: 600;
-    min-width: 84px;
+  .weather-body { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .w-icon {
+    width: 56px; height: 56px; flex-shrink: 0; border-radius: 50%;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
   }
-  .w-badge span { display: block; font-size: 14px; font-weight: 700; margin-top: 3px; }
+  .w-icon svg { width: 40px; height: 40px; display: block; }
+  .w-info { display: flex; flex-direction: column; gap: 1px; }
+  .w-loc { font-size: 10px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--text-muted); }
+  .w-cond { font-size: 17px; font-weight: 700; color: var(--text-primary); }
+  .w-feels { font-size: 11px; color: var(--text-muted); }
+  .w-divider { width: 1px; align-self: stretch; background: var(--border); }
+  .w-temp { font-size: 34px; font-weight: 700; line-height: 1; color: var(--text-primary); display: flex; align-items: center; }
+  .w-temp .unit { font-size: 15px; font-weight: 500; color: var(--text-muted); margin-left: 2px; }
+  .w-badges { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+  .w-badge { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .w-badge .bi { width: 20px; height: 20px; flex-shrink: 0; }
+  .w-badge .bi.hum { color: var(--blue-ic); }
+  .w-badge .bi.wind { color: var(--text-muted); }
+  .w-badge .val { display: block; font-size: 13px; font-weight: 700; color: var(--text-primary); white-space: nowrap; }
+  .w-badge .lab { display: block; font-size: 9.5px; color: var(--text-muted); }
 
   /* LAYER 2 & 3: METRIC + TREND */
   .grid-row { display: grid; grid-template-columns: 1fr 2fr; gap: 16px; margin-bottom: 16px; }
@@ -212,23 +223,43 @@
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 24px 28px;
+    padding: 22px 24px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   }
-  .card.metric:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.08); border-color: #d8cdbd; }
-  .card.metric .title { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; }
-  .card.metric .bignum { font-size: 36px; font-weight: 700; margin: 0 0 6px; }
-  .card.metric .bignum .unit { font-size: 16px; font-weight: 500; color: var(--text-muted); margin-left: 2px; }
-  .kchg { font-size: 11px; font-weight: 600; color: var(--text-muted); }
+  .card.metric:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.08); border-color: #b9cf9c; }
+  .card.metric .title { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+  .metric-head { display: flex; align-items: center; gap: 12px; }
+  .metric-avatar {
+    width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .metric-avatar svg { width: 20px; height: 20px; display: block; }
+  .metric-avatar.temp { background: var(--coral-bg); }
+  .metric-avatar.hum { background: var(--blue-bg); }
+  .card.metric .bignum { font-size: 28px; font-weight: 700; margin: 0; }
+  .card.metric .bignum .unit { font-size: 14px; font-weight: 500; color: var(--text-muted); margin-left: 2px; }
+  .kchg { font-size: 11px; font-weight: 600; color: var(--text-muted); margin: 10px 0 14px; display: flex; align-items: center; gap: 6px; }
+  .kchg::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
   .kchg.good { color: var(--green); }
   .kchg.warn { color: var(--yellow); }
   .kchg.bad { color: var(--red); }
-  .minmax { font-size: 10px; color: var(--text-muted); margin-top: 6px; }
+  .minmax { display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--text-muted); padding-top: 12px; border-top: 1px solid var(--border); }
+  .minmax .hi { font-weight: 600; color: var(--red); }
+  .minmax .lo { font-weight: 600; color: var(--text-muted); }
+  .card.metric.hum .minmax .hi { color: var(--blue-ic); }
   .chart-wrap { height: 160px; position: relative; margin-top: 4px; }
   .db-card.trend { display: flex; flex-direction: column; margin-bottom: 0; }
+  .db-card-hd .trend-sub { font-size: 10.5px; color: var(--text-muted); display: block; margin-top: 1px; }
+  .readings-pill {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 10px; color: var(--text-muted);
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 4px 10px 4px 12px;
+  }
+  .readings-pill svg { width: 11px; height: 11px; }
 
   /* FOOTER */
   .page-footer {
@@ -256,4 +287,6 @@
     .page-footer { left: 64px; }
     .grid-row { grid-template-columns: 1fr; }
     .w-badges { margin-left: 0; }
+    .weather-body { gap: 14px; }
+    .w-divider { display: none; }
   }

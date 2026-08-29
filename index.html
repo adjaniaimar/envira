@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,17 +31,25 @@
 
       <!-- LAYER 1: WEATHER -->
       <div class="db-card">
-        <div class="db-card-hd">
-          <div class="db-card-title">Cuaca Bekasi</div>
-          <div class="db-card-sub" id="weatherCond">Memuat cuaca...</div>
-        </div>
         <div class="weather-body">
           <div class="w-icon" id="weatherIcon"></div>
+          <div class="w-info">
+            <div class="w-loc">Bekasi</div>
+            <div class="w-cond" id="weatherCond">Loading weather...</div>
+            <div class="w-feels">Feels like <span id="weatherFeels">--</span></div>
+          </div>
+          <div class="w-divider"></div>
           <div class="w-temp"><span id="weatherTemp">--</span><span class="unit">°C</span></div>
+          <div class="w-divider"></div>
           <div class="w-badges">
-            <div class="w-badge">Terasa<span id="weatherFeels">--</span></div>
-            <div class="w-badge">Kelembapan<span id="weatherHum">--</span></div>
-            <div class="w-badge">Angin<span id="weatherWind">--</span></div>
+            <div class="w-badge">
+              <svg class="bi hum" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-3 4.5-6 8.2-6 11.5A6 6 0 0 0 18 13.5C18 10.2 15 6.5 12 2Z"/></svg>
+              <div><span class="val" id="weatherHum">--</span><span class="lab">Humidity</span></div>
+            </div>
+            <div class="w-badge">
+              <svg class="bi wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9a3 3 0 1 0-2.5-4.5M3 12h13a3 3 0 1 1-2.5 4.8M3 16h7"/></svg>
+              <div><span class="val" id="weatherWind">--</span><span class="lab">Wind</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -50,14 +58,22 @@
       <div class="grid-row">
         <div class="card metric">
           <p class="title">Temperature</p>
-          <p class="bignum"><span id="tempNow">0.0</span><span class="unit">°C</span></p>
+          <div class="metric-head">
+            <div class="metric-avatar temp">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--coral-ic)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.5a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
+            </div>
+            <p class="bignum"><span id="tempNow">0.0</span><span class="unit">°C</span></p>
+          </div>
           <p class="kchg" id="tempStatus">--</p>
-          <p class="minmax" id="tempMinMax">Tertinggi -- · Terendah --</p>
+          <div class="minmax"><span class="hi" id="tempMax">High --</span><span class="lo" id="tempMin">Low --</span></div>
         </div>
         <div class="db-card trend">
           <div class="db-card-hd">
-            <div class="db-card-title">Temperature Trend</div>
-            <div class="db-card-sub">20 readings</div>
+            <div>
+              <div class="db-card-title">Temperature Trend</div>
+              <span class="trend-sub">Last 20 readings</span>
+            </div>
+            <div class="readings-pill">20 readings<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div>
           </div>
           <div class="chart-wrap"><canvas id="chartTemp"></canvas></div>
         </div>
@@ -65,16 +81,24 @@
 
       <!-- LAYER 3: HUMIDITY -->
       <div class="grid-row">
-        <div class="card metric">
+        <div class="card metric hum">
           <p class="title">Humidity</p>
-          <p class="bignum"><span id="humNow">0.0</span><span class="unit">%</span></p>
+          <div class="metric-head">
+            <div class="metric-avatar hum">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-ic)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-3 4.5-6 8.2-6 11.5A6 6 0 0 0 18 13.5C18 10.2 15 6.5 12 2Z"/></svg>
+            </div>
+            <p class="bignum"><span id="humNow">0.0</span><span class="unit">%</span></p>
+          </div>
           <p class="kchg" id="humStatus">--</p>
-          <p class="minmax" id="humMinMax">Tertinggi -- · Terendah --</p>
+          <div class="minmax"><span class="hi" id="humMax">High --</span><span class="lo" id="humMin">Low --</span></div>
         </div>
         <div class="db-card trend">
           <div class="db-card-hd">
-            <div class="db-card-title">Humidity Trend</div>
-            <div class="db-card-sub">20 readings</div>
+            <div>
+              <div class="db-card-title">Humidity Trend</div>
+              <span class="trend-sub">Last 20 readings</span>
+            </div>
+            <div class="readings-pill">20 readings<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div>
           </div>
           <div class="chart-wrap"><canvas id="chartHum"></canvas></div>
         </div>
